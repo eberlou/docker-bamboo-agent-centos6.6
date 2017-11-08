@@ -28,4 +28,4 @@ export JAVA_TOOL_OPTIONS="-Dfile.encoding=utf-8 -Dsun.jnu.encoding=utf-8"
 export DISPLAY=:1
 
 echo Starting Bamboo Agent...
-java -jar "${BAMBOO_AGENT}" "${BAMBOO_SERVER}/agentServer/"
+java -jar "${BAMBOO_AGENT}" "http://${BAMBOO_SERVER}:${BAMBOO_SERVER_PORT}/agentServer/"
