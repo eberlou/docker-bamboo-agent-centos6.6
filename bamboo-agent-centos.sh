@@ -12,7 +12,7 @@ BAMBOO_AGENT=atlassian-bamboo-agent-installer-${AGENT_VERSION}.jar
 
 if [ ! -f ${BAMBOO_AGENT} ]; then
 	echo "Downloading agent JAR..."
-	wget "-O${BAMBOO_AGENT}" "http://${BAMBOO_SERVER}/agentServer/agentInstaller/${BAMBOO_AGENT}"
+	wget "-O${BAMBOO_AGENT}" "http://${BAMBOO_SERVER}:${BAMBOO_SERVER_PORT}/agentServer/agentInstaller/atlassian-bamboo-agent-installer-${AGENT_VERSION}.jar"
 fi
 
 if [ ! -f bamboo-agent-home/bamboo-agent.cfg.xml -a "${BAMBOO_AGENT_UUID}" != "" ]; then
