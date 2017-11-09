@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:6.6
 MAINTAINER L-A B <la.bergeron@hotmail.com>
 
 # Update system & install dependencies
