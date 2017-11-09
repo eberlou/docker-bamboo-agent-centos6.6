@@ -11,6 +11,7 @@ RUN groupadd -r -g 900 bamboo-agent \
 	&& useradd -r -m -u 900 -g 900 bamboo-agent
 
 COPY bamboo-agent-centos.sh /
+COPY bamboo-capabilities.properties /
 
 USER bamboo-agent
 CMD ["/bamboo-agent-centos.sh"]
