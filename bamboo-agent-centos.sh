@@ -1,18 +1,31 @@
 #!/bin/bash
 
-cd ~
+## Installing requested packages (need to be root)
+if [ "${PACKAGES}" != "" ]; then
+        echo "Packages to install: "${PACKAGES}
+        yum -y install ${PACKAGES}
+        yum -y clean all
+else
+  echo "Nothing to install."
+fi
 
+## Checking if BAMBOO_SERVER is defined
 if [ -z "${BAMBOO_SERVER}" ]; then
 	echo "Bamboo server URL undefined!" >&2
 	echo "Please set BAMBOO_SERVER environment variable to URL of your Bamboo instance." >&2
 	exit 1
 fi
 
+cd ~
+
 BAMBOO_AGENT=atlassian-bamboo-agent-installer-${AGENT_VERSION}.jar
 
+
+## Set BANBOO_AGENT_HOME
 if [ -z "${BAMBOO_AGENT_HOME}" ]; then
-	export BAMBOO_AGENT_HOME=/home/bamboo-agent/bamboo-agent-home
+	export BAMBOO_AGENT_HOME=~/bamboo-agent-home
 fi
+
 
 if [ ! -f ${BAMBOO_AGENT} ]; then
 	echo "Downloading agent JAR..."
